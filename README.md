@@ -5,4 +5,10 @@ Project for NLP course.
 # Dependence
 apache-mime4j-0.8.0-SNAPSHOT
 # How to get started
-First you need to add the GATE lib directory to the project's environment.
+1. Create a brand new java project in eclipse.
+2. Add all .jar file in lib/ and bin/ folder in your Gate folder as external lib.
+3. Go to command line and get into the eclipse project folder, type:  
+`$ git init`  
+`$ git remote add origin https://github.com/diwei-jiang/goNLP.git`  
+`$ git pull origin master`
+4. add plugins in the plugins folder.
