@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/apache-mime4j-core.jar"/>
 	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/bcmail-jdk15.jar"/>
 	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/commons-logging.jar"/>
 	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/flying-saucer-core.jar"/>
@@ -16,7 +15,6 @@
 	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/ant-launcher.jar"/>
 	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/ant.jar"/>
 	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/aopalliance.jar"/>
-	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/apache-mime4j-dom.jar"/>
 	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/bcprov-jdk15.jar"/>
 	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/commons-codec.jar"/>
 	<classpathentry kind="lib" path="/Applications/GATE_Developer_7.1/lib/commons-compress.jar"/>
@@ -51,5 +49,13 @@
 			<attribute name="javadoc_location" value="http://jenkins.gate.ac.uk/job/GATE-Nightly/javadoc/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/apache-mime4j-benchmark-0.8.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/apache-mime4j-core-0.8.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/apache-mime4j-dom-0.8.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/apache-mime4j-examples-0.8.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/apache-mime4j-mbox-iterator-0.8.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/apache-mime4j-storage-0.8.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -26,7 +26,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
-import java.net.URL;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -394,7 +393,7 @@ public class EmailDocumentHandler {
     */
   private boolean lineBeginsWithField(String aTextLine){
     if (containsSemicolon(aTextLine)){
-      StringTokenizer tokenizer = new StringTokenizer(aTextLine,":");
+      StringTokenizer tokenizer = new StringTokenizer(aTextLine, ":");
 
       // get the first token
       String firstToken = null;
@@ -785,6 +784,7 @@ public class EmailDocumentHandler {
 //	    	Gate.setUrlBase(new URL("file:///Volumes/A/Dev/workspace/nlp/"));
 	      System.out.println(Gate.getGateHome().getCanonicalPath());
 	      System.out.println(Gate.getBuiltinCreoleDir());
+
 	      Gate.init();
 	      TestEmail testEmail = new TestEmail("");
 	      testEmail.testUnpackMarkup();

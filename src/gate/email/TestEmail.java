@@ -22,6 +22,8 @@ import java.util.Map;
 import junit.framework.*;
 
 import gate.Gate;
+
+import static gate.corpora.TestDocument.*;
 //import org.w3c.www.mime.*;
 
 
@@ -60,7 +62,7 @@ public class TestEmail extends TestCase
 
     docFormat.unpackMarkup (doc,"DocumentContent");
     // Verfy if all annotations from the default annotation set are consistent
-    gate.corpora.TestDocument.verifyNodeIdConsistency(doc);
+    verifyNodeIdConsistency(doc);
 
   } // testUnpackMarkup()
 
