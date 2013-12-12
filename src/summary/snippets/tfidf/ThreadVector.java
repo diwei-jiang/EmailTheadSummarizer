@@ -19,28 +19,28 @@ public class ThreadVector {
 	}
 	
 	public void select(){
-		while(true){
-			double max = 0;
+		while(sentenceVectors.size() > 0){
+			double max = Double.NEGATIVE_INFINITY;
 			SentenceVector select = null;
 			for(SentenceVector sv: sentenceVectors){
 				double score = getScore(sv);
+				sv.setScore(score);
 				if(score >= max){
 					max = score;
 					select = sv;
 				}
 			}
-			if(max > 0){
-				sentenceVectors.remove(select);
-				selected.add(select);
-			}
-			if(max < 0.0001) break;
+			sentenceVectors.remove(select);
+			selected.add(select);
+			//if(max < 0.0001) break;
 		}
 	}
 	
+	// keep both informative and novel
 	private double getScore(SentenceVector s){
 		double similarityToCenter = cosin(s.getVector(), vector);
 		double maxSimilarityToSelectedSentences = getMaxSimilarityToSelectedSentences(s);
-		double weightedScore = similarityToCenter - maxSimilarityToSelectedSentences;
+		double weightedScore = similarityToCenter - 0.3 * maxSimilarityToSelectedSentences;
 		return weightedScore;
 	}
 	

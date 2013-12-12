@@ -8,6 +8,8 @@ public class SentenceVector {
 	private String sentence;
 	private HashMap<String, Integer> wordCount;
 	private double[] vector;
+	private double score;
+	private int index;
 	
 	public SentenceVector(String sentence, HashMap<String, Integer> wordCount){
 		this.sentence = sentence;
@@ -38,5 +40,13 @@ public class SentenceVector {
 	
 	public String getText(){
 		return sentence;
+	}
+	
+	public void setScore(double score){
+		this.score = score;
+	}
+	
+	public double getScore(){
+		return this.score;
 	}
 }

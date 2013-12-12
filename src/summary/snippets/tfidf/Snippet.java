@@ -66,7 +66,7 @@ public class Snippet {
 		for (String word : Snippet.dictionaryIndex.keySet()) {
 			Snippet.dictionaryIdf.put(
 					word,
-					Math.log((double) totalSentenceNumber
+					Math.log((double) (totalSentenceNumber + 1)
 							/ (double) dictionaryDocumentCount.get(word)));
 		}
 	}

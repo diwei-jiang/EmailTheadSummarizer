@@ -19,7 +19,7 @@ public class Main {
 		for(int i = 1; i <= 18; i++){
 			Email e = new Email("me", "now");
 			e.addSendTo("you");
-			Scanner scanner = new Scanner(new File("corpus/33 5th Floor/e" + i));
+			Scanner scanner = new Scanner(new FileInputStream(new File("corpus/33 5th Floor/e" + i)), "UTF-8");
 			String line;
 			while(scanner.hasNextLine()){
 				line = scanner.nextLine();
@@ -38,7 +38,7 @@ public class Main {
 		for(ThreadVector tv: snippet.getAllThreads()){
 			System.out.println(tv.getSubject());
 			for(SentenceVector sv: tv.getSelectedSentences()){
-				System.out.print(sv.getText() + "\t");
+				System.out.print(sv.getScore() + "\t" + sv.getText() + "\t");
 				System.out.println(Arrays.toString(sv.getVector()));
 			}
 		}
