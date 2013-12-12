@@ -7,6 +7,7 @@ public class Thread {
 	private int emailNumber;
 	private ArrayList<Email> emails;
 	
+	
 	public Thread(String header, int emailNumber){
 		this.header = header;
 		this.emailNumber = emailNumber;
@@ -18,7 +19,7 @@ public class Thread {
 	}
 	
 	public int getEmailNumber(){
-		return this.emailNumber;
+		return this.emails.size();
 	}
 	
 	public void addEmail(Email e){
