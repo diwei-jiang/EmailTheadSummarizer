@@ -17,7 +17,7 @@
  * specific language governing permissions and limitations      *
  * under the License.                                           *
  ****************************************************************/
-package mboxUtil;
+package summary.mboxUtil;
 
 import org.apache.james.mime4j.MimeException;
 import org.apache.james.mime4j.dom.Body;
@@ -60,6 +60,7 @@ public class MboxReader {
 
     private final static CharsetEncoder ENCODER = Charset.forName("UTF-8").newEncoder();
     private final static int MAXLINELEN = 10000;
+    public final static boolean DEBUG = true;
 	private static class EmailWrapper {
 		private String subject;
 		private Email email;
@@ -87,6 +88,10 @@ public class MboxReader {
 	}
 
     // simple example of how to split an mbox into individual files
+    /**
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         if (args.length < 1) {
             System.out.println("Please supply a path to a mbox file to parse");
@@ -95,13 +100,15 @@ public class MboxReader {
         
 		for (Thread th : parseThreads(args)) {
 			System.out.println(th.getEmailNumber() + "\t" + th.getHeader());
+//			System.out.println(th.toString());
 			for (Email em : th.getEmails()) {
-				System.out.println(em.toString());
+//				System.out.println(em.getSendBy() + "-->" + em.getSendTo());
 				for (Sentence s : em.getSentences()) {
 					System.out.println(s.getQuotationTimes() + ", "
 							+ s.getText());
 				}
 			}
+			if(DEBUG) break;
 		}
     }
     public static ArrayList<Thread> parseThreads(String[] mboxes) 
@@ -222,20 +229,23 @@ public class MboxReader {
 		StringBuilder phrase = new StringBuilder();
 
 		for(String line : lines){
-			if(line.matches("On[ \\w,]+at[ \\w,:]+[AP]M|[ \\w<>@.,]+wrote:") ) {
-//				System.out.println("regex ++" + line);
+
+			int angles = countAngles(line);
+			line = line.substring(angles).trim();
+			if(line.isEmpty()) continue;
+			line += " "; // add a whitespace to the end because we trimmed it before
+			
+			if(line.matches("(.*On[ \\w,]+at[ \\w,:]+[AP]M.*)|.*wrote:.*") ) {
 				continue;
 			}
-			
-			int angles = countAngles(line);
 //			System.out.println(angles  + "--||" +line );
+//			System.out.println(line);
 
 			//TODO: should remove all "On Wed, Sep 25, 2013 at 10:37 AM, Christopher Connors <
 			// christopher.n.connors@gmail.com> wrote:"
 			
 			if(angles == quoteLevel && !line.isEmpty()){
-				if(angles < line.length())
-					phrase.append(line.substring(angles));
+				phrase.append(line);
 			}
 			else if(angles >= quoteLevel){
 				if(phrase.length() > 0){
@@ -244,9 +254,8 @@ public class MboxReader {
 					phrase = new StringBuilder();
 					quoteLevel = angles;
 				}
-				if(angles < line.length())
-					// +1 to skip the space between >>>[_]Let's do it.
-					phrase.append(line.substring(angles+1));
+				// +1 to skip the space between >>>[_]Let's do it.
+				phrase.append(line);
 			}
 		}
 		if(phrase.length() > 0){
@@ -267,7 +276,7 @@ public class MboxReader {
 //			listSen.add(new Sentence(quote, s));
 //		}
 		
-		listSen.add(new Sentence(quote, phrase.replaceAll("^\\s*\\n", "")));
+		listSen.add(new Sentence(quote, phrase.replaceAll("^\\s*\\n", " ")));
 		return listSen;
 	}
 	

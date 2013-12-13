@@ -3,17 +3,20 @@ package summary.snippets.tfidf;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import org.apache.james.mime4j.MimeException;
+
+import summary.mboxUtil.MboxReader;
 import summary.structure.Email;
 import summary.structure.Sentence;
 import summary.structure.Thread;
-
 public class Main {
 	
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException, MimeException {
 		Thread t = new Thread("hello", 1);
 		
 		for(int i = 1; i <= 18; i++){
@@ -28,7 +31,8 @@ public class Main {
 			}
 			t.addEmail(e);
 		}
-
+		
+//		ArrayList<Thread> at = MboxReader.parseThreads(args);
 		ArrayList<Thread> at = new ArrayList<Thread>();
 		at.add(t);
 		
