@@ -58,5 +58,7 @@
 	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/commons-io-2.2.jar"/>
 	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/apache-mime4j-0.8.0-SNAPSHOT/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/stanford-corenlp-full-2013-11-12/stanford-corenlp-3.3.0.jar"/>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/stanford-corenlp-full-2013-11-12/stanford-corenlp-3.3.0-models.jar"/>
+	<classpathentry kind="lib" path="/Users/fenghhk/Downloads/stanford-corenlp-full-2013-11-12/stanford-corenlp-3.3.0-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

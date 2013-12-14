@@ -21,18 +21,18 @@ public class QuotationGraph {
 		for(Email em : thread.getEmails()){
 			
 			// a simple test graph
-			if(largestEmail == null) largestEmail = em;
-			else{
-				if(largestEmail.getSentences().size() < em.getSentences().size()){
-					largestEmail = em;
-				}
-			}
-//			GraphNode emailGraph = buildEmailGraph(em);
-//			if(threadGraph == null)  threadGraph = emailGraph;
+//			if(largestEmail == null) largestEmail = em;
 //			else{
-//				// merge threadGraph and emailGraph
-//				MergeByGraphIntersection(threadGraph, emailGraph);
+//				if(largestEmail.getSentences().size() < em.getSentences().size()){
+//					largestEmail = em;
+//				}
 //			}
+			GraphNode emailGraph = buildEmailGraph(em);
+			if(threadGraph == null)  threadGraph = emailGraph;
+			else{
+				// merge threadGraph and emailGraph
+				MergeByGraphIntersection(threadGraph, emailGraph);
+			}
 		}
 		return buildEmailGraph(largestEmail);
 		//return threadGraph;
@@ -106,6 +106,10 @@ public class QuotationGraph {
 	}
 	
 	public GraphNode buildEmailGraph(Email email){
+		if(email == null) {
+			System.out.println("Broken email: "+email);
+			return null;
+		}
 		GraphNode root = null;
 		//Suppose in one email, the user only replies to another email and no quotation level jump
 		for(Sentence sen : email.getSentences()){

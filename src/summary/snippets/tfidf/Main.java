@@ -32,9 +32,9 @@ public class Main {
 			t.addEmail(e);
 		}
 		
-//		ArrayList<Thread> at = MboxReader.parseThreads(args);
-		ArrayList<Thread> at = new ArrayList<Thread>();
-		at.add(t);
+		ArrayList<Thread> at = MboxReader.parseThreads(args);
+//		ArrayList<Thread> at = new ArrayList<Thread>();
+//		at.add(t);
 		
 		Snippet snippet = new Snippet();
 		snippet.run(at);
