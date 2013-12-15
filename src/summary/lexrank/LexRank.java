@@ -62,7 +62,9 @@ public class LexRank {
 	}
 	
 	private double idfModifiedCosine(SentenceVector x, SentenceVector y) {
-		return Vector.dotProduct(x.getVector(), y.getVector());
+		return Vector.dotProduct(x.getVector(), y.getVector()) 
+				/ Vector.magnitude(x.getVector()) 
+				/ Vector.magnitude(y.getVector());
 	}
 	
 	private void powerMethod(double dampFactor) {

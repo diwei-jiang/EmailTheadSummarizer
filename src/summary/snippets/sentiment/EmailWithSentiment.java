@@ -12,7 +12,7 @@ import java.util.Properties;
 import java.util.HashMap;
 
 import summary.structure.Email;
-import summary.structure.Sentance;
+import summary.structure.Sentence;
 
 public class EmailWithSentiment extends Email {
 

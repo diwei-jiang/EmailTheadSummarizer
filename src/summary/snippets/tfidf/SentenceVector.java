@@ -16,6 +16,10 @@ public class SentenceVector {
 		this.wordCount = wordCount;
 	}
 	
+	public SentenceVector(double [] vector) {
+		this.vector = vector;
+	}
+	
 	public void makeVector(){
 		vector = new double[Snippet.dictionaryIndex.size()];
 		int len = getLen();
