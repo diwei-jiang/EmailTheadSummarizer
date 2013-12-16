@@ -53,4 +53,5 @@ public class SentenceVector {
 	public double getScore(){
 		return this.score;
 	}
+	
 }

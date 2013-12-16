@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import summary.lexrank.Vector;
 import summary.snippets.tfidf.SentenceVector;
 import summary.lexrank.LexRank;
+import java.util.ArrayList;
 
 public class Main {
 	public static void main(String[] args) {
@@ -19,9 +20,9 @@ public class Main {
 		sv.add(new SentenceVector(vector3));
 		sv.add(new SentenceVector(vector4));
 		
-		LexRank lr = new LexRank(sv, 0.001);
+		LexRank lr = new LexRank(sv, 0.0001);
 		
-		System.out.println("\nResult: ");
+		System.out.println("Result: ");
 		Vector.printVector(lr.getLexScore());
 	}
 }

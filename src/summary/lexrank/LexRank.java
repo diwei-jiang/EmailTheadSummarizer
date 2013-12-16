@@ -19,7 +19,7 @@ public class LexRank {
 	private double dampingFactor = 0.85;
 	private ArrayList<SentenceVector> sentences;
 	private double [][] cosineMatrix;
-	private int [] degree;
+	private double [] degree;
 	private double [] lexScore;
 	
 	public LexRank(ArrayList<SentenceVector> sentences, double epsilon) {
@@ -43,7 +43,7 @@ public class LexRank {
 		for (int i = 0; i < sentences.size(); i++) {
 			cosineMatrix[i] = new double [sentences.size()];
 		}
-		degree = new int[sentences.size()];
+		degree = new double[sentences.size()];
 		lexScore = new double[sentences.size()];
 	}
 	
@@ -62,13 +62,12 @@ public class LexRank {
 	}
 	
 	private double idfModifiedCosine(SentenceVector x, SentenceVector y) {
-		return Vector.dotProduct(x.getVector(), y.getVector()) 
-				/ Vector.magnitude(x.getVector()) 
-				/ Vector.magnitude(y.getVector());
+		return Vector.dotProduct(x.getVector(), y.getVector()) / 
+				Vector.magnitude(x.getVector()) / Vector.magnitude(y.getVector());
 	}
 	
 	private void powerMethod(double dampFactor) {
-		double magDiff = epsilon + 100000;
+		double magDiff = Double.POSITIVE_INFINITY;
 		double size = (double)sentences.size();
 		lexScore = new double[sentences.size()];
 		double [] lexScoreNext = new double[sentences.size()];
@@ -82,7 +81,6 @@ public class LexRank {
 								* Vector.dotProduct(cosineMatrix[i], lexScore);
 			}
 			magDiff = Vector.difference(lexScoreNext, lexScore);
-			Vector.printVector(lexScoreNext);
 			System.arraycopy(lexScoreNext, 0, lexScore, 0, sentences.size());
 		}
 	}
