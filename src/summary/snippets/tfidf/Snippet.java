@@ -152,6 +152,10 @@ public class Snippet {
 		return false;
 	}
 
+	public void resetPipline () {
+		this.pipeline.clearAnnotatorPool();
+	}
+
 	public ArrayList<ThreadVector> getAllThreads() {
 		return this.allThreads;
 	}

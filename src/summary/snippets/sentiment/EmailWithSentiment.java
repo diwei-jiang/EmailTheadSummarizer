@@ -80,7 +80,7 @@ public class EmailWithSentiment extends Email {
    */
   public static void main (String[] args) {
     
-    String text1 = "I don't agree with you.";
+    String text1 = "Yes, that's great!";
     String text2 = "Lets get our taskrabbits fired up.";
     String text3 = "Just buy two power drills and some beers for Friday.";
     Sentence sen1 = new Sentence(0, text1);
