@@ -15,9 +15,7 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException, MimeException {
 
-		String [] filePath = new String[1];
-		filePath[0] = "/Users/diweijiang/Documents/class/NLP/mbox/permathreads.mbox/permathreads.mbox/mbox";
-		ArrayList<Thread> at = MboxReader.parseThreads(filePath);
+		ArrayList<Thread> at = MboxReader.parseThreads(args);
 		
 		Snippet snippet = new Snippet();
 		snippet.run(at);

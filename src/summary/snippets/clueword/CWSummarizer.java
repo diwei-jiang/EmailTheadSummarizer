@@ -22,6 +22,7 @@ public class CWSummarizer {
 	public static void main(String[] args) throws FileNotFoundException, IOException, MimeException{
 		ArrayList<Thread> threads =  MboxReader.parseThreads(args);
 //		System.out.println(threads);
+		
 		CWSummarizer cws = new CWSummarizer(10);
 		cws.run(threads);
 		HashMap<String, ArrayList<SentenceWrapper>> result = cws.getAllThreadsSummary();
@@ -57,9 +58,13 @@ public class CWSummarizer {
 	}
 	public void graphTraverse(GraphNode node, PriorityQueue<SentenceWrapper> ts){
 		// bfs 
+		if (node == null){
+			return;
+		}
 		HashSet<GraphNode> visited = new HashSet<GraphNode>();
 		LinkedList<GraphNode> visiting = new LinkedList<GraphNode>();
 		visiting.add(node);
+		
 		
 		while (visiting.size() > 0) {
 			GraphNode curNode = visiting.pop();
@@ -127,7 +132,7 @@ class SentenceWrapper implements Comparable<SentenceWrapper>{
 	}
 	@Override
 	public String toString() {
-		return clueScore + "\t" + sen + "\n";
+		return "" + clueScore + "\t" + sen + "\n";
 	}
 	
 }

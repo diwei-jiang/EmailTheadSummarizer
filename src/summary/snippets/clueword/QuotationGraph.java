@@ -28,6 +28,8 @@ public class QuotationGraph {
 //				}
 //			}
 			GraphNode emailGraph = buildEmailGraph(em);
+			if (emailGraph == null) 
+				continue;
 			if(threadGraph == null)  threadGraph = emailGraph;
 			else{
 				// merge threadGraph and emailGraph
@@ -73,8 +75,8 @@ public class QuotationGraph {
 						nextTarget.getSentences().getText());
 				
 				if(r) System.out.println(curNode.getSentences().getQuotationTimes() +":"+
-							curNode.getSentences().getText().substring(0,30)	+"\t\t" + 
-							nextTarget.getSentences().getQuotationTimes() +":"+ nextTarget.getSentences().getText().substring(0,30) + "\t\t" + r);
+							curNode.getSentences().getText()	+"\t\t" + 
+							nextTarget.getSentences().getQuotationTimes() +":"+ nextTarget.getSentences().getText() + "\t\t" + r);
 				
 				if(r)	break;
 	
@@ -107,6 +109,10 @@ public class QuotationGraph {
 	
 	public GraphNode buildEmailGraph(Email email){
 		if(email == null) {
+			System.out.println("Broken email: "+email);
+			return null;
+		}
+		if(email.getSentences().size() == 0){
 			System.out.println("Broken email: "+email);
 			return null;
 		}
