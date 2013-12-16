@@ -1,7 +1,8 @@
 package summary.lexrank;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
+import java.util.Comparator;
 
 import summary.snippets.tfidf.SentenceVector;
 import summary.lexrank.Vector;
@@ -30,8 +31,8 @@ public class LexRank {
 		powerMethod(this.dampingFactor);
 	}
 	
-	public double[] getLexScore() {
-		return this.lexScore;
+	public ArrayList<SentenceVector> getSentenceVector() {
+		return this.sentences;
 	}
 	
 	public void setDampingFactor(double dampingFactor) {
@@ -83,6 +84,23 @@ public class LexRank {
 			magDiff = Vector.difference(lexScoreNext, lexScore);
 			System.arraycopy(lexScoreNext, 0, lexScore, 0, sentences.size());
 		}
+		for (int i = 0; i < sentences.size(); i++) {
+			sentences.get(i).setScore(lexScore[i]);
+		}
+		Collections.sort(sentences, new SentenceComparator());
 	}
 	
+}
+
+class SentenceComparator implements Comparator<SentenceVector> {
+	@Override
+	public int compare(SentenceVector s1, SentenceVector s2) {
+		if (s1.getScore() < s2.getScore()) {
+			return 1;
+		} else if (s1.getScore() > s2.getScore()) {
+			return -1;
+		} else {
+			return 0;
+		}
+	}
 }

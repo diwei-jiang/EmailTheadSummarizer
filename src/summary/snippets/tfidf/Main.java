@@ -48,7 +48,12 @@ public class Main {
 //				System.out.println(Arrays.toString(sv.getVector()));
 			}
 			LexRank lrank = new LexRank(tv.getSentenceVectors(), 0.0);
-			lrank.getLexScore();
+			ArrayList<SentenceVector> lexRankedSentence = lrank.getSentenceVector();
+			System.out.println("**********Lex Rank Result************");
+			for (SentenceVector sv : lexRankedSentence) {
+				System.out.printf("%f\t%s\n", sv.getScore(), sv.getText());
+			}
+			System.out.println("*************************************");
 		}
 	}
 
