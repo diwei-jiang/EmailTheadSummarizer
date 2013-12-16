@@ -15,7 +15,9 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException, MimeException {
 
-		ArrayList<Thread> at = MboxReader.parseThreads(args);
+		String [] fp = {"C:/Users/Wendong/git/goNLP/corpus/mbox"};
+		ArrayList<Thread> at = MboxReader.parseThreads(fp);
+//		ArrayList<Thread> at = MboxReader.parseThreads(args);
 		
 		Snippet snippet = new Snippet();
 		snippet.run(at);

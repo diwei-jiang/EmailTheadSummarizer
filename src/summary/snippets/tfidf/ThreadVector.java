@@ -41,6 +41,10 @@ public class ThreadVector {
 			double score = getScore(sv);
 			sv.setScore(score);
 		}
+		selected = new ArrayList<SentenceVector>();
+		for (SentenceVector sv : sentenceVectors) {
+			selected.add(new SentenceVector(sv.getText(), sv.getScore()));
+		}
 		selected = new ArrayList<SentenceVector>(sentenceVectors);
 		Collections.sort(selected, new SentenceComparator());
 	}

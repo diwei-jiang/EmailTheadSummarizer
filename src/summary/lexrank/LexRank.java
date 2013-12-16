@@ -105,7 +105,6 @@ public class LexRank {
 		for (SentenceVector sv : hybridScore) {
 			sumOfTfidfScore += sv.getScore();
 		}
-		System.out.println(sumOfTfidfScore);
 		for (int i = 0; i < hybridScore.size(); i++) {
 			hybridScore.get(i).setScore(hybridScore.get(i).getScore() / sumOfTfidfScore 
 					+ lexScore[i]);
