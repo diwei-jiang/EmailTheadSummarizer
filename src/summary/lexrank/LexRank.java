@@ -19,6 +19,7 @@ public class LexRank {
 	private double epsilon = 0.0;
 	private double dampingFactor = 0.2;
 	private ArrayList<SentenceVector> sentences;
+	private ArrayList<SentenceVector> hybridScore;
 	private double [][] cosineMatrix;
 	private double [] degree;
 	private double [] lexScore;
@@ -33,6 +34,10 @@ public class LexRank {
 	
 	public ArrayList<SentenceVector> getSentenceVector() {
 		return this.sentences;
+	}
+	
+	public ArrayList<SentenceVector> getHybridScoreVector() {
+		return this.hybridScore;
 	}
 	
 	public void setDampingFactor(double dampingFactor) {
@@ -84,10 +89,25 @@ public class LexRank {
 			magDiff = Vector.difference(lexScoreNext, lexScore);
 			System.arraycopy(lexScoreNext, 0, lexScore, 0, sentences.size());
 		}
+		calculateHybridScore();
 		for (int i = 0; i < sentences.size(); i++) {
 			sentences.get(i).setScore(lexScore[i]);
 		}
 		Collections.sort(sentences, new SentenceComparator());
+	}
+	
+	private void calculateHybridScore() {
+		hybridScore = new ArrayList<SentenceVector>(sentences);
+		double sumOfTfidfScore = 0.0;
+		for (SentenceVector sv : hybridScore) {
+			sumOfTfidfScore += sv.getScore();
+		}
+		System.out.println(sumOfTfidfScore);
+		for (int i = 0; i < hybridScore.size(); i++) {
+			hybridScore.get(i).setScore(hybridScore.get(i).getScore() / sumOfTfidfScore 
+					+ lexScore[i]);
+		}
+		Collections.sort(hybridScore, new SentenceComparator());
 	}
 	
 }

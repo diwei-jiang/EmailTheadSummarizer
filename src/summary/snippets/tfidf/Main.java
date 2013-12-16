@@ -30,18 +30,24 @@ public class Main {
 				// System.out.println(Arrays.toString(sv.getVector()));
 			}
 			
-			// sentiment
-			snippet.resetPipline();
-			System.out.println("*************Sentiment***************");
-			double scores = (new SentimentWraper()).getThreadScores(tv);
-			System.out.println(scores);
-			System.out.println("*************************************");
+//			// sentiment
+//			snippet.resetPipline();
+//			System.out.println("*************Sentiment***************");
+//			double scores = (new SentimentWraper()).getThreadScores(tv);
+//			System.out.println(scores);
+//			System.out.println("*************************************");
 			
 			// lex page rank
 			LexRank lrank = new LexRank(tv.getSentenceVectors(), 0.0);
 			ArrayList<SentenceVector> lexRankedSentence = lrank.getSentenceVector();
 			System.out.println("**********Lex Rank Result************");
 			for (SentenceVector sv : lexRankedSentence) {
+				System.out.printf("%f\t%s\n", sv.getScore(), sv.getText());
+			}
+			System.out.println("*************************************");
+			ArrayList<SentenceVector> hybridScore = lrank.getHybridScoreVector();
+			System.out.println("**********Hybrid Result************");
+			for (SentenceVector sv : hybridScore) {
 				System.out.printf("%f\t%s\n", sv.getScore(), sv.getText());
 			}
 			System.out.println("*************************************");
