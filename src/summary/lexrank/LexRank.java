@@ -17,7 +17,7 @@ import summary.lexrank.Vector;
 public class LexRank {
 	
 	private double epsilon = 0.0;
-	private double dampingFactor = 0.85;
+	private double dampingFactor = 0.2;
 	private ArrayList<SentenceVector> sentences;
 	private double [][] cosineMatrix;
 	private double [] degree;

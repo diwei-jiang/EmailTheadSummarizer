@@ -43,6 +43,7 @@ public class Main {
 		System.out.println("results:");
 		for(ThreadVector tv: snippet.getAllThreads()){
 			System.out.println(tv.getSubject());
+			System.out.println("********Greedy Add TFIDF Result*******");
 			for(SentenceVector sv: tv.getSelectedSentences()){
 				System.out.println(sv.getScore() + "\t" + sv.getText() + "\t");
 //				System.out.println(Arrays.toString(sv.getVector()));
