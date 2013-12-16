@@ -16,6 +16,11 @@ public class SentenceVector {
 		this.wordCount = wordCount;
 	}
 	
+	public SentenceVector(String sentence, double score) {
+		this.sentence = sentence;
+		this.score = score;
+	}
+	
 	public SentenceVector(double [] vector) {
 		this.vector = vector;
 	}

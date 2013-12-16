@@ -19,7 +19,7 @@ public class Main {
 		
 		Snippet snippet = new Snippet();
 		snippet.run(at);
-		System.out.println("results:");
+		System.out.println("Results:\n");
 		for(ThreadVector tv: snippet.getAllThreads()){
 			
 			// tf-idf 

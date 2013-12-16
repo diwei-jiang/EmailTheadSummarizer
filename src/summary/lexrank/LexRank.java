@@ -97,7 +97,10 @@ public class LexRank {
 	}
 	
 	private void calculateHybridScore() {
-		hybridScore = new ArrayList<SentenceVector>(sentences);
+		hybridScore = new ArrayList<SentenceVector>();
+		for (SentenceVector sv : sentences) {
+			hybridScore.add(new SentenceVector(sv.getText(),sv.getScore()));
+		}
 		double sumOfTfidfScore = 0.0;
 		for (SentenceVector sv : hybridScore) {
 			sumOfTfidfScore += sv.getScore();
